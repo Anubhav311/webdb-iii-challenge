@@ -4,10 +4,11 @@ const knex = require('knex');
 const knexConfig = {
   client: 'sqlite3',
   connection: {
-    filename: './data/rolex.db3',
+    filename: './data/lambda.db3',
   },
   useNullAsDefault: true, // needed for sqlite
 };
+
 const db = knex(knexConfig);
 
 
@@ -15,7 +16,7 @@ const db = knex(knexConfig);
 router.get('/', async (req, res) => {
     // get the roles from the database
     try {
-      const roles = await db('roles'); // all the records from the table
+      const roles = await db('cohorts'); // all the records from the table
       res.status(200).json(roles);
     } catch (error) {
       res.status(500).json(error);
