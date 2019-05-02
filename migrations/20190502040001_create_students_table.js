@@ -10,12 +10,11 @@ exports.up = function(knex, Promise) {
             .unique();
 
         tbl
-            .integer('cohort_id')
-            .unsigned()
-            .references('id')
-            .inTable('roles')
-            .onDelete('CASCADE')
-            .onUpdate('CASCADE');
+        .integer('cohort_id')
+        .unsigned()
+        .references('id') 
+        .inTable('cohorts');
+
 
         tbl
             .timestamps(true, true);

@@ -90,4 +90,13 @@ router.get('/', async (req, res) => {
     } catch (error) {}
   });
 
+  router.get('/:id/students', (req, res) => {
+      db('cohorts')
+        .join('students', 'cohorts.id', 'students.cohort_id')
+        .select('students.id', 'students.name')
+        .then(response => {
+            res.status(200).json(response)
+        })
+  })
+
 module.exports = router;
